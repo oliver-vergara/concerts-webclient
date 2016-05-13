@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th> Artist </th>
+    <th> Schedule </th>
+    <th> City </th>
+    <th> State </th>
+  </tr>
+  <% @concerts.each do |concert| %>
+  <tr>
+    <td>
+      <%= concert['artist'] %>
+      <%= concert['concert_date'] %>
+      <%= concert['city'] %>
+      <%= concert['state'] %>
+    </td>
+  </tr>
+</table>
