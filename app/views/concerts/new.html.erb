@@ -1,8 +1,31 @@
 <h1>Create New Concert</h1>
 
-<div><%= form_tag '/concerts' do %>
-
+<%= form_tag '/concerts' do %>
+<div>
   <%= label_tag :artist %>
   <%= text_field_tag :artist %>
+</div>
+
+<div>
+  <%= label_tag :genre %>
+  <%= text_field_tag :genre %>  
+</div>
+
+<div>
+  <%= label_tag :concert_date %>
+  <%= text_field_tag :concert_date %>  
+</div>
+
+<div>
+  <%= label_tag :city %>
+  <%= text_field_tag :city %>  
+</div>
+
+<div>
+  <%= label_tag :state %>
+  <%= text_field_tag :state %>  
+</div>
+
+<%= submit_tag "Create Concert" %>
 
 <% end %>

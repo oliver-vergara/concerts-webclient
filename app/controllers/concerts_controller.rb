@@ -1,10 +1,10 @@
 class ConcertsController < ApplicationController
   def show
-    @concert = Unirest.get("http://localhost:3000/api/v1/concerts/#{params[:id]}.json").body
+    @concert = Unirest.get("#{ENV['DOMAIN']}/concerts/#{params[:id]}.json").body
   end
 
   def index
-    @concerts = Unirest.get("http://localhost:3000/api/v1/concerts.json").body
+    @concerts = Unirest.get("#{ENV['DOMAIN']}/concerts.json").body
   end 
 
   def new
