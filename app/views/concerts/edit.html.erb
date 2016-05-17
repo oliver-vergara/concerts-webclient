@@ -1,0 +1,33 @@
+<h1>Update a Concert</h1>
+
+<%= form_tag "/concerts/#{@concert.id}", method: :patch do %>
+
+  <div>
+    <%= label_tag :artist %>
+    <%= text_field_tag :artist, @concert.artist  %>
+  </div>
+
+  <div>
+    <%= label_tag :genre %>
+    <%= text_field_tag :genre, @concert.genre %>
+  </div>
+
+  <div>
+    <%= label_tag :concert_date %>
+    <%= text_field_tag :concert_date, @concert.schedule %>
+  </div>
+
+  <div>
+    <%= label_tag :city %>
+    <%= text_field_tag :city, @concert.city %>
+  </div>  
+
+  <div>
+    <%= label_tag :state %>
+    <%= text_field_tag :state, @concert.state %>
+  </div>
+
+
+  <%= submit_tag 'Update Concert' %>
+
+<% end %>

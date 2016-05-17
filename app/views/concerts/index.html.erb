@@ -6,12 +6,13 @@
     <th> State </th>
   </tr>
   <% @concerts.each do |concert| %>
-  <tr>
-    <td>
-      <%= concert['artist'] %>
-      <%= concert['concert_date'] %>
-      <%= concert['city'] %>
-      <%= concert['state'] %>
-    </td>
-  </tr>
+    <tr>
+      <td><%= concert.artist %></td>
+      <td><%= concert.schedule %></td>
+      <td><%= concert.city %></td>
+      <td><%= concert.state %></td>
+    </tr>
+  <% end %>
 </table>
+        
+      
