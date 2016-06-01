@@ -12,18 +12,14 @@ class Concert
   end
 
   def self.find(id)
-    concert_hash = Unirest.get("#{ENV['DOMAIN']}/concerts/#{id}.json", headers: {"Accept" => "application/json",
-   "Authorization" => "Token token=#{ENV['TOKEN']}",
-   "X-User-Email" => "#{ENV['EMAIL']}"}).body
+    concert_hash = Unirest.get("#{ENV['DOMAIN']}/concerts/#{id}.json", headers: {"Accept" => "application/json", "X-User-Email" => ENV['USER_EMAIL'], "Authorization" => "Token token=#{ENV['API_KEY']}"}).body
     return Concert.new(concert_hash)
   end
 
   def self.all
 
     concert_hashes = Unirest.get("#{ENV['DOMAIN']}/concerts.json", 
-      headers: {"Accept" => "application/json",
-   "Authorization" => "Token token=#{ENV['TOKEN']}",
-   "X-User-Email" => "#{ENV['EMAIL']}"}).body
+      headers: {"Accept" => "application/json", "X-User-Email" => ENV['USER_EMAIL'], "Authorization" => "Token token=#{ENV['API_KEY']}"}).body
     @concerts = []
     concert_hashes.each do |hash|
       @concerts << Concert.new(hash)
