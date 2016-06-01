@@ -19,8 +19,9 @@ class ConcertsController < ApplicationController
   end
 
   def create
-    @concert = Unirest.post("#{ENV['DOMAIN']}/concerts.json", headers: {"Accept" => "application/json"}, parameters: {artist: params[:artist], genre: params[:genre], concert_date: params[:concert_date], city: params[:city], state: params[:state]}).body
-    redirect_to "/concerts/#{@concert['id']}"
+    @concert = Concert.create(artist: params[:artist], genre: params[:genre], concert_date: params[:concert_date], city: params[:city], state: params[:state])
+    
+    redirect_to "/concerts/#{@concert.id}"
   end
 
   def update

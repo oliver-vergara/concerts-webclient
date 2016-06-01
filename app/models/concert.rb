@@ -12,18 +12,32 @@ class Concert
   end
 
   def self.find(id)
-    concert_hash = Unirest.get("#{ENV['DOMAIN']}/concerts/#{id}.json").body
+    concert_hash = Unirest.get("#{ENV['DOMAIN']}/concerts/#{id}.json", headers: {"Accept" => "application/json",
+   "Authorization" => "Token token=#{ENV['TOKEN']}",
+   "X-User-Email" => "#{ENV['EMAIL']}"}).body
     return Concert.new(concert_hash)
   end
 
   def self.all
 
-    concert_hashes = Unirest.get("#{ENV['DOMAIN']}/concerts.json").body
+    concert_hashes = Unirest.get("#{ENV['DOMAIN']}/concerts.json", 
+      headers: {"Accept" => "application/json",
+   "Authorization" => "Token token=#{ENV['TOKEN']}",
+   "X-User-Email" => "#{ENV['EMAIL']}"}).body
     @concerts = []
     concert_hashes.each do |hash|
       @concerts << Concert.new(hash)
     end
     return @concerts
+  end
+
+  def self.create(parameters_hash)
+    @concert = Unirest.post("#{ENV['DOMAIN']}/concerts.json", headers: {"Accept" => "application/json"}, parameters: {artist: params[:artist], genre: params[:genre], concert_date: params[:concert_date], city: params[:city], state: params[:state]}).body
+    return Concert.new(concert_hash)
+  end
+
+  def destroy
+    
   end
 
   def update(params)
